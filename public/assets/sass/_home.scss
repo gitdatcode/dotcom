@@ -1,0 +1,182 @@
+.home-template > .section {
+	padding: 20px;
+}
+
+.splash {
+	height: 100vh;
+	width: auto;
+	background-image: url("../images/HOME_PAGE_ANIMATION.gif");
+	background-position: center;
+	background-size: cover;
+
+	@media screen and (max-width: 640px) {
+		background-image: url("../images/HOME_PAGE_ANIMATION_MOBILE.gif");
+	}
+	
+
+	.wrapper {
+		display: flex;
+		height: inherit;
+		justify-content: center;
+		align-content: center;
+	}
+
+	.splash-text {
+		text-transform: uppercase;
+		line-height: 1.5em;
+	}	
+}
+
+.section {
+	width: auto;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	h1 { 
+		text-transform: uppercase; 
+		font-size: 3em;
+		line-height: 1em;
+		text-align: center;
+
+		@media screen and (max-width: 640px) {
+			font-size: 2em;
+		}
+	}
+
+	p { 
+
+		font-size: 1.5em; 
+		@media screen and (max-width: 640px) { font-size: 1em; }
+	}
+
+	opacity: 0;
+	transition: opacity 4s;
+	transform: translate(0, 40px);
+	transition: all 1s;
+}
+
+.section.visible {
+	opacity: 1;
+	transform: translate(0, 0);
+}
+
+.section.who {
+	background-image: url("../images/head.jpg");
+	background-position: center;
+	background-size: cover;
+	min-height: 80vh;
+
+	.layer {
+		width: 100%;
+		height: inherit;
+		background-color: map-get($s5-map--color, dc-red);
+		background-color: rgba(239, 0, 83, 0.5);
+	}
+	
+} 
+
+.section.what {
+	min-height: 140vh;
+	width: auto;
+}
+
+.section.join {
+	height: 60vh;
+	width: auto;
+}
+
+.splash-logo {
+
+
+}
+
+.features {
+	display: flex;
+	flex-wrap: wrap;
+
+	.feature {
+	}
+
+	box-sizing: border-box;
+	section {
+		position: relative;
+		box-sizing: border-box;
+		display: block;
+		padding: 20px;
+		max-width: 45%;
+		margin: 2.5%;
+
+		border: 1px solid map-get($s5-map--color, dc-white);
+		border-radius: 2px;
+		
+		@media screen and (max-width: 640px) {
+			max-width: 100%;
+		}
+	}
+
+	p { font-size: 1em; }
+}
+
+.about {
+	display: relative;
+	height: 100vh;
+	width: auto;
+	background-color: map-get($s5-map--color, dc-red);
+
+	.about-img {
+		height: 60%;
+		background-image: url("../images/head.jpg");
+		background-size: cover;
+		background-position: center;
+	}
+
+	.about-text {
+		height: 40%;
+		padding: 30% 20px;
+	}
+
+}
+
+.whois {
+	display: relative;
+	height: 60vh;
+	color: map-get($s5-map--color, dc-black);
+	background-color: map-get($s5-map--color, dc-green);
+
+	.slack-img {
+		height: 60%;
+		background-image: url("../images/converse.jpg");
+		background-size: cover;
+		background-position: center;
+	}
+
+	.whois-text {
+		height: 40%;
+		padding: 20px;
+	}
+	> * {
+		display: block;
+	}
+}
+
+#asterisk {
+	color: map-get($s5-map--color, dc-red);
+}
+
+.join { text-align: center; }
+
+.sign-up {
+	display: flex;
+	padding: 10px;
+	justify-content: center;
+
+	background-color: map-get($s5-map--color, dc-purple);
+	border-radius: 3px;
+
+	text-transform: uppercase;
+	color: map-get($s5-map--color, dc-white);
+	text-decoration: none;
+	font-weight: 700;
+}

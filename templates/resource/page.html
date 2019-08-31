@@ -1,0 +1,40 @@
+<?php
+$search = trim(strip_tags($this->get('search', '')));
+$content = $this->get('content', '');
+$all_tags = $this->get('all_tags', []);
+?>
+<link href="/assets/css/resources.css" rel='stylesheet' type='text/css'>
+<div class="search_page">
+    <div class="search_heading">
+        <div class="wrapper">
+            <h1>Resources</h1>
+            <h3>curated by the community</h3>
+            <form action="/resources" method="get" class="resource_form">
+                <fieldset>
+                    <input type="text" name="search" value="<?php echo $search; ?>" class="search_input" />
+                    <button class="search_button">search</button>
+                </fieldset>
+            </form>
+        </div>
+        <div class="all_tags">
+            <div class="all_tags_container">
+                <div class="all_tags_scroll">
+                    <?php
+                    echo $this->render('resource/tag_list.html', ['tags' => $all_tags]);
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="search_results">
+        <div class="wrapper">
+            <?php echo $content; ?>
+        </div>
+    </div>
+</div>
+<script src="/assets/js/resource.js"></script>
+<script>
+    $(function(){
+        var r = new Resource();
+    });
+</script>

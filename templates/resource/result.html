@@ -1,0 +1,33 @@
+<?php
+$result = $this->get('result', []);
+
+if(isset($result['resource']) && isset($result['user']) && isset($result['tags'])):
+    $resource = $result['resource'];
+    $user = $result['user'];
+    $href = sprintf('/resource/%s', $resource['id']);
+    $href = $resource['uri'];
+    $user_href = sprintf('/resources?search=@%s', $user['username']);
+    $date = date('Y-m-d', $resource['date_created']);
+?>
+    <li class="result">
+        <a href="<?php echo $href; ?>" class="result_uri" target="_blank"><?php echo $resource['uri']; ?></a>
+        <p class="search_descripition"><?php echo stripslashes(strip_tags($resource['description'])); ?></p>
+
+        <table class="result_footer">
+            <tbody>
+                <tr>
+                    <td class="result_footer_user">
+                        <a href="<?php echo $user_href;?>" class="search_item search_user" data-search="@<?php echo $user['username']; ?>">@<?php echo $user['username']; ?></a>
+                    </td>
+                    <td class="result_footer_tags">
+                        <div class="result_tags">
+                            <?php echo $this->render('resource/tag_list.html', ['tags' => $result['tags']]); ?>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </li>
+<?php
+endif;
+?>

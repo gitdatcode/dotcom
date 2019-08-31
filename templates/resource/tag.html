@@ -1,0 +1,10 @@
+<?php
+$tag = $this->get('tag', false);
+
+if($tag):
+    $href = sprintf('/resources?search=%s', urlencode('#' . trim($tag['tag'])));
+?>
+    <a href="<?php echo $href; ?>" class="tag search_item" data-search="#<?php echo trim(strip_tags($tag['tag'])); ?>">#<?php echo trim(strip_tags($tag['tag'])); ?></a>
+<?php
+endif;
+?>

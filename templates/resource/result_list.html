@@ -1,0 +1,22 @@
+<?php
+$resources = $this->get('resources', []);
+
+if(isset($resources['data'])):
+    $id = sprintf('result_set-%s', $resources['data']['id']);
+?>
+    <ol class="result_list" id="<?php echo $id; ?>">
+    <?php
+    foreach($resources['data']['resources'] as $resource):
+        echo $this->render('resource/result.html', ['result' => $resource]);
+    endforeach;
+    ?>
+    </ol>
+<?php
+// add next button
+if(isset($resources['pagination']['next'])){
+    echo $this->render('resource/next_button.html', [
+        'next' => $resources['pagination']['next'],
+    ]);
+}
+endif;
+?>

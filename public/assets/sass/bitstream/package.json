@@ -1,0 +1,27 @@
+{
+  "name": "@datcode/bistream-ui",
+  "version": "0.0.1-alpha",
+  "description": "DATCODE, INC. design language",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitdatcode/bitstreamUI.git"
+  },
+  "author": "DatCode",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gitdatcode/bitstreamUI/issues"
+  },
+  "homepage": "https://github.com/gitdatcode/bitstreamUI#readme",
+  "keywords": [
+    "scss",
+    "framework",
+    "css",
+    "frontend-framework",
+    "design",
+    "system"
+  ]
+}

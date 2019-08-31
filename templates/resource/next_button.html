@@ -1,0 +1,9 @@
+<?php
+$next = $this->get('next', 1);
+$query = $_GET;
+$query['page'] = $next;
+$href = sprintf('%s?%s', $_SERVER['PATH_INFO'], http_build_query($query));
+?>
+<div class="load_container">
+    <a href="<?php echo $href; ?>" class="load_more_resources">load more</a>
+</div>

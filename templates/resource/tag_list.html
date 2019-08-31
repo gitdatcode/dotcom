@@ -1,0 +1,17 @@
+<?php
+$tags = $this->get('tags', []);
+
+if($tags):
+?>
+<ul class="tag_list">
+    <?php
+    foreach($tags as $tag):
+    ?>
+        <li><?php echo $this->render('resource/tag.html', ['tag' => $tag]); ?></li>
+    <?php
+    endforeach;
+    ?>
+</ul>
+<?php
+endif;
+?>

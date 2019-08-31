@@ -1,0 +1,18 @@
+body {
+    //@include box-sizing(border-box);
+    color: #2f2c30;
+    margin: 0 auto;
+
+    img {
+        max-width: 100%;
+    }
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.content {
+    padding-top: 100px;
+}

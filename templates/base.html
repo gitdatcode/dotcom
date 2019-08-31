@@ -1,0 +1,72 @@
+<?php
+$content = $this->get('content', '');
+?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>
+            DATCODE | Do The Most
+        </title>
+        <meta name="HandheldFriendly" content="True">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link href="/assets/css/spectre.css?v=ad2d8d5c6f" rel="stylesheet" type="text/css">
+        <link href="/assets/fonts/workplace-icons/flaticon.css?v=ad2d8d5c6f" rel='stylesheet' type='text/css'>
+        <link href="/assets/fonts/creative-process-icons/flaticon.css?v=ad2d8d5c6f" rel='stylesheet' type='text/css'>
+        <link href="/assets/css/ghost.css?v=ad2d8d5c6f" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="/assets/js/script.js?v=ad2d8d5c6f" type="text/javascript"></script>
+        <meta name="description" content="DATCODE is a vibrant, inclusive community of Black technologists sharing knowledge, meeting new people, and doing the most.">
+        <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png">
+        <link rel="canonical" href="https://www.datcode.io/">
+        <meta name="referrer" content="no-referrer-when-downgrade">
+        <meta property="og:site_name" content="DATCODE | Do The Most">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="DATCODE | Do The Most">
+        <meta property="og:description" content="DATCODE is a vibrant, inclusive community of Black technologists sharing knowledge, meeting new people, and doing the most.">
+        <meta property="og:url" content="https://www.datcode.io/">
+        <meta property="og:image" content="https://www.datcode.io/assets/images/2019/03/banner.png">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="DATCODE | Do The Most">
+        <meta name="twitter:description" content="DATCODE is a vibrant, inclusive community of Black technologists sharing knowledge, meeting new people, and doing the most.">
+        <meta name="twitter:url" content="https://www.datcode.io/">
+        <meta name="twitter:image" content="https://www.datcode.io/assets/images/2019/03/banner.png">
+        <meta name="twitter:site" content="@talkdatcode">
+        <meta property="og:image:width" content="2000">
+        <meta property="og:image:height" content="1078">
+        <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "publisher": {
+        "@type": "Organization",
+        "name": "DATCODE | Do The Most",
+        "logo": "https://www.datcode.io/assets/images/DATCODE_ENERGY_LOGOMARK_WHITE.png"
+        },
+        "url": "https://www.datcode.io/",
+        "image": {
+        "@type": "ImageObject",
+        "url": "https://www.datcode.io/assets/images/2019/03/banner.png",
+        "width": 2000,
+        "height": 1078
+        },
+        "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.datcode.io/"
+        },
+        "description": "DATCODE is a vibrant, inclusive community of Black technologists sharing knowledge, meeting new people, and doing the most."
+        }
+        </script>
+        <meta name="generator" content="Ghost 2.9">
+        <link rel="alternate" type="application/rss+xml" title="DATCODE | Do The Most" href="https://www.datcode.io/blog/rss/">
+    </head>
+    <body class="home-template">
+        <?php 
+        echo $this->render('assets/nav.html'); 
+        echo $content;
+        echo $this->render('assets/footer.html');
+        ?>
+    </body>
+</html>

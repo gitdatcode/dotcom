@@ -1,0 +1,139 @@
+
+<div class="sign-up-template">
+    <div class="wrapper">
+        <h1 class="title">Join the Intergalactic Black Tech Collective</h1>
+        <p>Sign up now for access to our Slack group, where we share our stories and knowledge, and most importantly, be ourselves.</p>
+        <p>Quick note: we ask that all information given is valid; we care a lot about the safety of our members, and each new sign-up is vetted before entry. <b>All fields are required.</b></p>
+        <div id="mc_embed_signup" class="signup-contents">
+            <div id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+                    <div id="mce-responses" class="clear">
+                        <div class="response" id="mce-error-response" style="display:none"></div>
+                        <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>
+                <form id="signup_form" action="/sign-up" method="post">
+                    <section>
+                        <div class="mc-field-group form-group">
+                                <label for="mce-FNAME">First Name</label>
+                                <input type="text" value="" name="first_name" class="form-control" id="mce-FNAME">
+                        </div>
+                        <div class="mc-field-group form-group">
+                                <label for="mce-LNAME">Last Name</label>
+                                <input type="text" value="" name="last_name" class="form-control" id="mce-LNAME">
+                        </div>
+                        <div class="mc-field-group form-group">
+                            <label for="mce-EMAIL">Email</label>
+                                <input type="email" value="" name="email" class="form-control email" id="mce-EMAIL" />
+                        </div>
+                        <div class="mc-field-group form-group">
+                            <label for="mce-SOCIAL">Link to a Social Profile <br/><small>(Twitter, LinkedIn, Instagram, etc.)</small></label>
+                                <input type="text" value="" name="social" class="form-control" id="mce-SOCIAL" />
+                        </div>
+                        <div class="mc-field-group form-group">
+                            <label for="mce-MMERGE5">How did you hear about DATCODE?</label>
+                            <select name="hear" class="form-control" id="mce-MMERGE5">
+                                <option value="">please select...</option>
+                                <option value="Twitter">Twitter</option>
+                                <option value="A Friend">A Friend</option>
+                                <option value="Search">Search</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mc-field-group form-group">
+                            <label for="mce-MMERGE5">Tell us about yourself</label>
+                            <textarea name="about" class="form-control about"></textarea>
+                            <div class="about_count"><span class="count">0</span>/250</div>
+                        </div>
+                    </section>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_013dedee15048a62c85ed9114_e96dd3387e" tabindex="-1" value=""></div>
+                    <div class="submit">
+                        <input type="submit" value="Join us!" name="subscribe" id="mc-embedded-subscribe"  />
+                    </div>
+                    <div id="message"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+#mce-responses .response{
+    width: 300px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+}
+#mce-error-response {
+    color: #EF0053;
+}
+#mce-success-response {
+    color: #fff;
+}
+.signup-contents .form-control.about{
+    height: 125px;
+}
+.about_count{
+    text-align: right;
+}
+</style>
+<script>
+    $(function(){
+        var form = $('#signup_form'),
+            error = $('#mce-error-response'),
+            success = $('#mce-success-response'),
+            control = form.find('.form-control'),
+            about = form.find('.about'),
+            count = form.find('.count'),
+            fields = {},
+            can_submit = true;
+
+        control.each(function(i, f){
+            fields[f.name] = $(f);
+        });
+
+        about.on('keyup', function(){
+            var len = about.val().length;
+            count.text(len);
+
+            if(len > 250){
+                can_submit = false;
+                about.addClass('required');
+            }else{
+                can_submit = true;
+                about.removeClass('required');
+            }
+        });
+
+        form.on('submit', function(e){
+            e.preventDefault();
+            error.text('').css('display', 'none');
+
+            if(!can_submit){
+                error.text('Fix form errors').css('display', '');
+                return;
+            }
+
+            $.ajax({
+                'url': form.attr('action'),
+                'method': 'post',
+                'dataType': 'json',
+                'data': form.serialize(),
+                'success': function(resp){
+                    control.removeClass('required');
+
+                    if(resp.errors.length > 0){
+                        success.text('').css('display', 'none');
+                        error.text(resp.message).css('display', '');
+
+                        for(var f = 0; f < resp.errors.length; f++){
+                            fields[resp.errors[f]].addClass('required');
+                        }
+                    } else {
+                        error.text('').css('display', 'none');
+                        success.text(resp.message).css('display', '');
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+
