@@ -12,6 +12,7 @@ require_once __DIR__ . '/../controller.php';
 $routes = [
     '/' => new Index(),
     '/about' => new AboutController(),
+    '/blog(?:/([\w\-\_]+)?)?/?' => new BlogController(),
     '/sign-up' => new Signup(),
     '/resources' => new Resources(),
     '/resource/(\d+)' => new ResourceView(),

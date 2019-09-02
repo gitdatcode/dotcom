@@ -1,0 +1,27 @@
+<?php
+$posts = $this->get('posts', []);
+
+if(count($posts) == 0){
+    throw Exception();
+}
+?>
+<div class="about-template">
+    <div class="wrapper">
+        <ol>
+            <?php
+            foreach($posts as $post):
+                if($post['status'] != 'published'){
+                    continue;
+                }
+
+                $href = sprintf('/blog/%s', $post['slug']);
+            ?>
+                <li>
+                    <a href="<?php echo $href; ?>"><?php echo $post['title']; ?></a>
+                </li>
+            <?php
+            endforeach;
+            ?>
+        </ol>
+    </div>
+</div>
