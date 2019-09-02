@@ -11,6 +11,7 @@ require_once __DIR__ . '/../controller.php';
 // bind the handlers to a regex route
 $routes = [
     '/' => new Index(),
+    '/about' => new AboutController(),
     '/sign-up' => new Signup(),
     '/resources' => new Resources(),
     '/resource/(\d+)' => new ResourceView(),

@@ -139,6 +139,14 @@ class Index extends BaseHandler {
     }
 }
 
+class AboutController extends BaseHandler {
+    public function get(){
+        $content = $this->load('pages/about.html');
+
+        return $this->page($content);
+    }
+}
+
 
 /**
  * Signup page controller
