@@ -21,11 +21,12 @@ class BaseHandler extends Handler{
         $this->_app_config = appConfig();
     }
 
-    public function page($content, array $args = array()){
+    public function page($content, $title = false, array $args = array(), $status_code=200){
         $args['content'] = $content;
+        $args['title'] = $title;
         $content = $this->load('base.html', $args);
 
-        return $this->write($content);
+        return $this->write($content, 'text/html', $status_code);
     }
 
     public function getConfig($setting){
@@ -305,7 +306,7 @@ class BlogController extends BaseHandler {
                         'content' => $post['html'],
                     ]);
 
-                    return $this->page($content);
+                    return $this->page($content, 'DATCODE | '.$post['title']);
                 }
             }
         }
@@ -331,13 +332,14 @@ class FourOhFourHandler extends BaseHandler {
         "👀",
     ];
     protected $_template = '404.html';
+    protected $_status_code = 404;
 
     public function get(){
         $i = array_rand($this->_messages);
         $message = $this->_messages[$i];
         $four = $this->load($this->_template, ['message' => $message]);
 
-        return $this->page($four);
+        return $this->page($four, $this->_status_code, $this->_status_code);
     }
 }
 
@@ -347,6 +349,7 @@ class FiveOhOhHandler extends FourOhFourHandler {
         'yo, what did you do?',
     ];
     protected $_template = '500.html';
+    protected $_status_code = 500;
 
     public function get(){
         // log the 500

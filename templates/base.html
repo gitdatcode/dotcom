@@ -1,5 +1,6 @@
 <?php
 $content = $this->get('content', '');
+$title = $this->get('title', 'DATCODE | Do The Most');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +8,7 @@ $content = $this->get('content', '');
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>
-            DATCODE | Do The Most
+            <?php echo $title; ?>
         </title>
         <meta name="HandheldFriendly" content="True">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -22,14 +23,14 @@ $content = $this->get('content', '');
         <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png">
         <link rel="canonical" href="https://www.datcode.io/">
         <meta name="referrer" content="no-referrer-when-downgrade">
-        <meta property="og:site_name" content="DATCODE | Do The Most">
+        <meta property="og:site_name" content="<?php echo $title; ?>">
         <meta property="og:type" content="website">
-        <meta property="og:title" content="DATCODE | Do The Most">
+        <meta property="og:title" content="<?php echo $title; ?>">
         <meta property="og:description" content="DATCODE is a vibrant, inclusive community of Black technologists sharing knowledge, meeting new people, and doing the most.">
         <meta property="og:url" content="https://www.datcode.io/">
         <meta property="og:image" content="https://www.datcode.io/assets/images/2019/03/banner.png">
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="DATCODE | Do The Most">
+        <meta name="twitter:title" content="<?php echo $title; ?>">
         <meta name="twitter:description" content="DATCODE is a vibrant, inclusive community of Black technologists sharing knowledge, meeting new people, and doing the most.">
         <meta name="twitter:url" content="https://www.datcode.io/">
         <meta name="twitter:image" content="https://www.datcode.io/assets/images/2019/03/banner.png">
@@ -42,7 +43,7 @@ $content = $this->get('content', '');
         "@type": "WebSite",
         "publisher": {
         "@type": "Organization",
-        "name": "DATCODE | Do The Most",
+        "name": "<?php echo $title; ?>",
         "logo": "https://www.datcode.io/assets/images/DATCODE_ENERGY_LOGOMARK_WHITE.png"
         },
         "url": "https://www.datcode.io/",
@@ -60,7 +61,7 @@ $content = $this->get('content', '');
         }
         </script>
         <meta name="generator" content="Ghost 2.9">
-        <link rel="alternate" type="application/rss+xml" title="DATCODE | Do The Most" href="https://www.datcode.io/blog/rss/">
+        <link rel="alternate" type="application/rss+xml" title="<?php echo $title; ?>" href="https://www.datcode.io/blog/rss/">
     </head>
     <body class="home-template">
         <?php 
