@@ -129,6 +129,7 @@
                     } else {
                         error.text('').css('display', 'none');
                         success.text(resp.message).css('display', '');
+                        form[0].reset();
                     }
                 }
             });
