@@ -7,10 +7,13 @@ if(isset($result['resource']) && isset($result['user']) && isset($result['tags']
     $href = sprintf('/resource/%s', $resource['id']);
     $href = $resource['uri'];
     $user_href = sprintf('/resources?search=@%s', $user['username']);
-    $date = date('Y-m-d', $resource['date_created']);
+    $date = date('m-d-Y', $resource['date_created']);
 ?>
     <li class="result">
         <a href="<?php echo $href; ?>" class="result_uri" target="_blank"><?php echo $resource['uri']; ?></a>
+        <div class="result_date">
+            <?php echo $date; ?>
+        </div>
         <p class="search_descripition"><?php echo stripslashes(strip_tags($resource['description'])); ?></p>
 
         <table class="result_footer">

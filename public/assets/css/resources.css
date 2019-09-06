@@ -133,6 +133,9 @@
                     .result_tags {
                         text-align: right;
                     }
+                .result_date{
+                    font-size: 12px;
+                }
 
     .tag_list {
         list-style: none;
