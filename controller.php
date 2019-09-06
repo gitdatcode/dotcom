@@ -96,7 +96,7 @@ class BaseHandler extends Handler{
                     if(is_array($data)){
                         $data = http_build_query($data);
                     }
-                    p($data);
+
                     curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
                 }
 
@@ -339,7 +339,7 @@ class FourOhFourHandler extends BaseHandler {
         $message = $this->_messages[$i];
         $four = $this->load($this->_template, ['message' => $message]);
 
-        return $this->page($four, $this->_status_code, $this->_status_code);
+        return $this->page($four, $this->_status_code, [], $this->_status_code);
     }
 }
 
@@ -351,8 +351,36 @@ class FiveOhOhHandler extends FourOhFourHandler {
     protected $_template = '500.html';
     protected $_status_code = 500;
 
+    private function exceptionToSlack(){
+        ob_start();
+        var_dump($this->exception);
+        $exc = ob_get_clean();
+        $headers = [
+            'Content-type' => 'application/json',
+        ];
+        $post = [
+            'text' => '500',
+            'attachments' => [
+                [
+                    'pretext' => 'there was a 500 on the DATCODE site',
+                    'fields' => [
+                        [
+                            'title' => 'Exception trace',
+                            'value' => $exc,
+                            'short' => false
+                        ],
+                    ]
+                ]
+            ]
+        ];
+        $url = sprintf('https://hooks.slack.com/services/%s', $this->getConfig('slack_admin_webhook'));
+        $post = json_encode($post);
+
+        $this->callAPI('POST', $url, $post, $headers);
+    }
+
     public function get(){
-        // log the 500
+        $this->exceptionToSlack();
         return parent::get();
     }
 }
