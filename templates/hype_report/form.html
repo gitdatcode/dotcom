@@ -1,0 +1,77 @@
+<?php
+$current_month = $this->get('current_month', date('F', mktime(0, 0, 0, date('m'), 10)));
+$current_year = $this->get('current_year', date('Y'));
+?>
+<div class="sign-up-template">
+    <div class="wrapper">
+        <h1 class="title">DATCODE Hype Report: <?php echo $current_month .', '. $current_year; ?></h1>
+        <h2 class="subtitle">A celebration of our accomplishments</h2>
+        <div id="mc_embed_signup" class="signup-contents">
+            <div id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+                <div id="mce-responses" class="clear">
+                    <div class="response" id="mce-error-response" style="display:none"></div>
+                    <div class="response" id="mce-success-response" style="display:none"></div>
+                </div>
+                <form id="hype_form" action="/hype-report" method="post">
+                    <section>
+                        <div class="mc-field-group form-group">
+                                <label for="mce-FNAME">First Name</label>
+                                <input type="text" value="" name="first_name" class="form-control" id="mce-FNAME">
+                        </div>
+                        <div class="mc-field-group form-group">
+                                <label for="mce-LNAME">Last Name</label>
+                                <input type="text" value="" name="last_name" class="form-control" id="mce-LNAME">
+                        </div>
+                        <div class="mc-field-group form-group">
+                            <label for="hype">
+                                Hype yourself! What achievements (large or small!), are you celebrating this month?
+                            </label>
+                            <textarea name="hype" class="form-control hypefield"></textarea>
+                        </div>
+                        <hr />
+                        <div class="mc-field-group form-group">
+                            <label for="share">Can we share this across our social media (twitter, instagram, linkedin, facebook, etc)?</label>
+                            <label>
+                                <input type="radio" name="share" value="1"> yes
+                            </label>
+                            <label>
+                                <input type="radio" name="share" value="0"> no
+                            </label>
+                        </div>
+                        <hr />
+                        <div class="mc-field-group form-group">
+                            <label for="more_hype">
+                                Anything else you're celebrating?
+                            </label>
+                            <textarea name="more_hype" class="form-control hypefield"></textarea>
+                        </div>
+                        <div class="mc-field-group form-group">
+                            <label for="mce-FNAME">HYPE CODE (ask in Slack)</label>
+                            <input type="text" value="" name="hype_code" class="form-control" id="mce-FNAME">
+                        </div>
+                    </section>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_013dedee15048a62c85ed9114_e96dd3387e" tabindex="-1" value=""></div>
+                    <div class="submit">
+                        <input type="submit" value="Share Your Hype!" name="share" id="mc-embedded-subscribe"  />
+                    </div>
+                    <div id="message"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    form#hype_form div textarea.hypefield{
+        height: 125px;
+    }
+    form#hype_form div.submit input{
+        width: auto;
+        cursor: pointer;
+    }
+    .subtitle{
+        font-size: 2em;
+        text-align: center;
+        line-height: 1em;
+        text-transform: uppercase;
+    }
+</style>

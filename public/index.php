@@ -12,10 +12,13 @@ require_once __DIR__ . '/../controller.php';
 $routes = [
     '/' => new Index(),
     '/about' => new AboutController(),
+    '/code-jam' => new CodeJamController(),
+    '/ai-learning-club' => new AILearningClubController(),
     '/blog(?:/([\w\-\_]+)?)?/?' => new BlogController(),
     '/sign-up' => new Signup(),
     '/resources' => new Resources(),
     '/resource/(\d+)' => new ResourceView(),
+    '/hype-report' => new HypeReport(),
 ];
 
 $t = new Template(__DIR__ .'/../templates');

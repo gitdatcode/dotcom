@@ -129,23 +129,34 @@ class BaseHandler extends Handler{
 }
 
 
-/**
- * Homepage controller
- */
-class Index extends BaseHandler {
+
+class StaticPage extends BaseHandler {
+    protected $page = '404.html';
+
     public function get(){
-        $content = $this->load('index.html');
+        $content = $this->load($this->page);
 
         return $this->page($content);
     }
 }
 
-class AboutController extends BaseHandler {
-    public function get(){
-        $content = $this->load('pages/about.html');
+/**
+ * Homepage controller
+ */
+class Index extends StaticPage {
+    protected $page = 'index.html';
+}
 
-        return $this->page($content);
-    }
+class AboutController extends StaticPage {
+    protected $page = 'pages/about.html';
+}
+
+class CodeJamController extends StaticPage {
+    protected $page = 'pages/code_jam.html';
+}
+
+class AILearningClubController extends StaticPage {
+    protected $page = 'pages/ai_learning_club.html';
 }
 
 
@@ -316,6 +327,26 @@ class BlogController extends BaseHandler {
         ]);
 
         return $this->page($content);
+    }
+}
+
+class HypeReport extends BaseHandler {
+
+    private $_titles = [
+        'Submit your hype!',
+        'Tell us something good',
+    ];
+
+    public function get(){
+        $i = array_rand($this->_titles);
+        $title = $this->_titles[$i];
+        $args = [
+            'current_month' => date('F', mktime(0, 0, 0, date('m'), 10)),
+            'current_year' => date('Y'),
+        ];
+        $hype = $this->load('hype_report/form.html', $args);
+
+        return $this->page($hype, $title);
     }
 }
 
