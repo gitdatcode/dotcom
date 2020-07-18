@@ -1,52 +1,53 @@
 
 <div class="sign-up-template">
     <div class="wrapper">
-        <h1 class="title">Join the Intergalactic Black Tech Collective</h1>
-        <p>Sign up now for access to our Slack group, where we share our stories and knowledge, and most importantly, be ourselves.</p>
-        <p>Quick note: we ask that all information given is valid; we care a lot about the safety of our members, and each new sign-up is vetted before entry. <b>All fields are required.</b></p>
+        <h1 class="title">
+            Help Make DATCODE Better
+        </h1>
         <div id="mc_embed_signup" class="signup-contents">
             <div id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
                     <div id="mce-responses" class="clear">
                         <div class="response" id="mce-error-response" style="display:none"></div>
                         <div class="response" id="mce-success-response" style="display:none"></div>
                     </div>
-                <form id="signup_form" action="/sign-up" method="post">
+                <form id="signup_form" action="/contribute" method="post">
                     <section>
                         <div class="mc-field-group form-group">
-                                <label for="mce-FNAME">First Name</label>
-                                <input type="text" value="" name="first_name" class="form-control" id="mce-FNAME">
+                                <label for="mce-FNAME">Real Name</label>
+                                <input type="text" value="" name="name" class="form-control" id="mce-FNAME">
                         </div>
                         <div class="mc-field-group form-group">
-                                <label for="mce-LNAME">Last Name</label>
-                                <input type="text" value="" name="last_name" class="form-control" id="mce-LNAME">
+                                <label for="mce-FNAME">DATCODE userName</label>
+                                <input type="text" value="" name="username" class="form-control" id="mce-FNAME">
                         </div>
                         <div class="mc-field-group form-group">
                             <label for="mce-EMAIL">Email</label>
                                 <input type="email" value="" name="email" class="form-control email" id="mce-EMAIL" />
                         </div>
-                        <div class="mc-field-group form-group">
-                            <label for="mce-SOCIAL">Link to a Social Profile <br/><small>(Twitter, LinkedIn, Instagram, etc.)</small></label>
-                                <input type="text" value="" name="social" class="form-control" id="mce-SOCIAL" />
+                        <div class="mc-field-group form-group form_help" >
+                            <label for="mce-MMERGE5" class="help_heading">How would you like to help DATCODE?</label>
+                            <label>
+                                <input type="checkbox" name="help[]" value="social media"> Social Media (Twitter/Linkedin/Instagram)
+                            </label>
+                            <label>
+                                <input type="checkbox" name="help[]" value="website"> DATCODE Website
+                            </label>
+                            <label>
+                                <input type="checkbox" name="help[]" value="slack management"> DATCODE Slack Management
+                            </label>
+                            <label>
+                                <input type="checkbox" name="help[]" value="slack tools"> DATCODE Slack Apps & Tools
+                            </label>
                         </div>
                         <div class="mc-field-group form-group">
-                            <label for="mce-MMERGE5">How did you hear about DATCODE?</label>
-                            <select name="hear" class="form-control" id="mce-MMERGE5">
-                                <option value="">please select...</option>
-                                <option value="Twitter">Twitter</option>
-                                <option value="A Friend">A Friend</option>
-                                <option value="Search">Search</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                        <div class="mc-field-group form-group">
-                            <label for="mce-MMERGE5">Tell us about yourself</label>
-                            <textarea name="about" class="form-control about"></textarea>
-                            <div class="about_count"><span class="count">0</span>/250</div>
+                            <label for="mce-MMERGE5">Is there anything you'd like to add?</label>
+                            <textarea name="notes" class="form-control notes"></textarea>
+                            <div class="notes_count"><span class="count">0</span>/250</div>
                         </div>
                     </section>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                     <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_013dedee15048a62c85ed9114_e96dd3387e" tabindex="-1" value=""></div>
                     <div class="submit">
-                        <input type="submit" value="Join us!" name="subscribe" id="mc-embedded-subscribe"  />
+                        <input type="submit" value="Sign Up!" name="subscribe" id="mc-embedded-subscribe"  />
                     </div>
                     <div id="message"></div>
                 </form>
@@ -67,11 +68,14 @@
 #mce-success-response {
     color: #fff;
 }
-.signup-contents .form-control.about{
+.signup-contents .form-control.notes{
     height: 125px;
 }
-.about_count{
+.notes_count{
     text-align: right;
+}
+.help_heading{
+    border: 1px solid transparent;
 }
 </style>
 <script>
@@ -80,8 +84,9 @@
             error = $('#mce-error-response'),
             success = $('#mce-success-response'),
             control = form.find('.form-control'),
-            about = form.find('.about'),
+            notes = form.find('.notes'),
             count = form.find('.count'),
+            help_heading = $('.help_heading'),
             fields = {},
             can_submit = true;
 
@@ -89,16 +94,18 @@
             fields[f.name] = $(f);
         });
 
-        about.on('keyup', function(){
-            var len = about.val().length;
+        fields['help'] = help_heading;
+
+        notes.on('keyup', function(){
+            var len = notes.val().length;
             count.text(len);
 
             if(len > 250){
                 can_submit = false;
-                about.addClass('required');
+                notes.addClass('required');
             }else{
                 can_submit = true;
-                about.removeClass('required');
+                notes.removeClass('required');
             }
         });
 
@@ -118,6 +125,7 @@
                 'data': form.serialize(),
                 'success': function(resp){
                     control.removeClass('required');
+                    help_heading.removeClass('required');
 
                     if(resp.errors.length > 0){
                         success.text('').css('display', 'none');
