@@ -93,6 +93,9 @@ class Contribute extends Signup {
                 ]
             ];
             $url = sprintf('https://hooks.slack.com/services/%s', $this->getConfig('slack_board_webhook'));
+            $post = json_encode($post);
+
+            $this->callAPI('POST', $url, $post, $headers);
         }else{
             $message = 'Please correct the form errors to continue your submission.';
         }
