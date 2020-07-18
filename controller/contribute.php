@@ -85,7 +85,7 @@ class Contribute extends Signup {
                             ],
                             [
                                 'title' => 'Notes',
-                                'value' => isset($slack['notes']) ? $slack['notes'] : 'none',
+                                'value' => isset($_POST['notes']) ? $_POST['notes'] : 'none',
                                 'short' => false
                             ],
                         ]
